@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07131f">
+  <title>Pi SME • Agent Reliability • PathRAG + Neo4j</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">π</span>
+      <span>Pi SME Project Update</span>
+    </div>
+    <div class="nav">
+      <button id="notesBtn" title="Show speaker notes">Notes</button>
+      <button id="prevBtn" aria-label="Previous slide">←</button>
+      <span id="counter">1 / 16</span>
+      <button id="nextBtn" aria-label="Next slide">→</button>
+      <button id="fsBtn" title="Fullscreen">Full Screen</button>
+    </div>
+  </header>
+
+  <main id="deck">
+
+    <section class="slide active" data-title="Title">
+      <div class="slide-shell title-slide">
+        <div class="kicker">PROJECT UPDATE • PI SME • AGENT RELIABILITY</div>
+        <h1>Making Our AI Agents Useful, Controlled, and Verifiable</h1>
+        <p class="hero-copy">My role is not only to run Pi. I am learning how Pi acts as the agent harness, how our agents connect to technical data, and how we give them clear rules, permissions, verification, and human review.</p>
+        <div class="tag-row">
+          <span>Pi</span><span>Ollama</span><span>PathRAG</span><span>Neo4j</span><span>Agent Rules</span><span>Security / Monitoring</span>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-card"><b>My Main Role</b><br>Pi Subject Matter Expert (SME)</div>
+          <div class="hero-card"><b>My Technical Work</b><br>Local AI + PathRAG + Neo4j validation</div>
+          <div class="hero-card"><b>My Reliability Focus</b><br>Rules, permissions, logs, verification, approval</div>
+        </div>
+      </div>
+      <aside class="speaker-note">I will explain what Pi is, what I have built, what I learned from the graph test, and how my role connects Pi, agents, technical data, security, and verification.</aside>
+    </section>
+
+    <section class="slide" data-title="My Role">
+      <div class="slide-shell">
+        <div class="kicker">01 • MY ROLE</div>
+        <h2>I Am the Pi SME for Our Team</h2>
+        <p class="intro">My job is to understand the agent harness and help the team use it in a controlled way.</p>
+        <div class="columns">
+          <div class="panel">
+            <div class="icon">π</div>
+            <h3>Pi SME</h3>
+            <ul>
+              <li>Understand how Pi runs an agent.</li>
+              <li>Understand model, tool, skill, file, and instruction access.</li>
+              <li>Help define how agents hand work to each other.</li>
+              <li>Help the team debug and operate Pi.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="icon">✓</div>
+            <h3>Agent Reliability</h3>
+            <ul>
+              <li>Help define agent rules and limits.</li>
+              <li>Identify actions that need human approval.</li>
+              <li>Support logging, monitoring, and verification.</li>
+              <li>Make agent behavior easier to explain and review.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">I am the Pi SME, so I need to understand more than the command to start Pi. I need to understand what the agent can access, how it gets its instructions and tools, how handoffs work, and how we keep important actions controlled.</aside>
+    </section>
+
+    <section class="slide" data-title="What Is Pi?">
+      <div class="slide-shell">
+        <div class="kicker">02 • PI EXPLAINED</div>
+        <h2>What Is Pi?</h2>
+        <div class="definition-card">
+          <div class="definition-word">Pi</div>
+          <div>
+            <h3>Pi is the coding-agent harness we are using.</h3>
+            <p>It is the environment around the LLM that lets an agent receive instructions, use tools and skills, work with files, and produce results.</p>
+          </div>
+        </div>
+        <div class="flow-strip">
+          <div><b>User / Task</b><span>What needs to be done</span></div><i>→</i>
+          <div class="focus"><b>Pi Harness</b><span>Runs the agent loop</span></div><i>→</i>
+          <div><b>LLM</b><span>Reasons and decides</span></div><i>↔</i>
+          <div><b>Tools / Skills</b><span>Take actions</span></div><i>↔</i>
+          <div><b>Files / Data</b><span>Provide context</span></div>
+        </div>
+        <div class="callout"><b>Important:</b> Pi is not the AI model itself. In my setup, Qwen is the model. Pi is the harness that lets the model operate as an agent.</div>
+      </div>
+      <aside class="speaker-note">The easiest way to explain Pi is: Qwen is the brain, but Pi is the working environment around the brain. Pi lets the model receive a task and use tools, files, skills, and instructions to actually do work.</aside>
+    </section>
+
+    <section class="slide" data-title="Why Pi Matters">
+      <div class="slide-shell">
+        <div class="kicker">03 • WHY PI MATTERS</div>
+        <h2>An Agent Needs More Than an LLM</h2>
+        <div class="equation">
+          <span>Agent</span><b>=</b><span>Model</span><b>+</b><span>Tools</span><b>+</b><span>Instructions</span><b>+</b><span>Rules</span><b>+</b><span>Harness</span>
+        </div>
+        <div class="grid-3">
+          <div class="panel compact"><h3>Model</h3><p>Reasoning and language.</p></div>
+          <div class="panel compact"><h3>Tools</h3><p>Files, commands, APIs, search, databases.</p></div>
+          <div class="panel compact"><h3>Instructions</h3><p>The job, goal, handoff, and expected output.</p></div>
+          <div class="panel compact"><h3>Rules</h3><p>What the agent can and cannot do.</p></div>
+          <div class="panel compact"><h3>Harness</h3><p>Pi runs the agent loop and connects these parts.</p></div>
+          <div class="panel compact"><h3>Verification</h3><p>Checks that important results are correct.</p></div>
+        </div>
+      </div>
+      <aside class="speaker-note">This is why my Pi role matters. If we only focus on the model, we miss the tools, instructions, permissions, and verification that decide whether an agent is actually reliable.</aside>
+    </section>
+
+    <section class="slide" data-title="My Setup">
+      <div class="slide-shell">
+        <div class="kicker">04 • WHAT I BUILT</div>
+        <h2>My Local AI and Data Pipeline</h2>
+        <div class="architecture">
+          <div class="arch-node"><b>Pi</b><small>Agent harness</small></div>
+          <div class="arrow">→</div>
+          <div class="arch-node"><b>Qwen 3.8 27B</b><small>Local model through Ollama</small></div>
+          <div class="arrow">→</div>
+          <div class="arch-node"><b>PathRAG</b><small>Extraction + retrieval</small></div>
+          <div class="arrow">→</div>
+          <div class="arch-node"><b>Neo4j</b><small>Knowledge graph</small></div>
+        </div>
+        <div class="grid-4">
+          <div class="metric"><strong>GPU</strong><span>NVIDIA access enabled</span></div>
+          <div class="metric"><strong>Qwen</strong><span>Local GPU inference working</span></div>
+          <div class="metric"><strong>768</strong><span>Nomic embedding dimension</span></div>
+          <div class="metric"><strong>Neo4j 5.18</strong><span>Separate database container</span></div>
+        </div>
+        <p class="subtle">I also fixed PathRAG configuration problems, including a duplicate PathRAG instance that was still creating the old 1536-dimension graph setup.</p>
+      </div>
+      <aside class="speaker-note">I first made the local model work on the GPU. Then I connected Pi to Ollama. I changed PathRAG to use Qwen and Nomic embeddings, fixed the duplicate PathRAG setup, and created a separate Neo4j container.</aside>
+    </section>
+
+    <section class="slide" data-title="Proof">
+      <div class="slide-shell">
+        <div class="kicker">05 • PROOF OF WORK</div>
+        <h2>Neo4j Browser Reached My Server-Side Database</h2>
+        <div class="proof-layout">
+          <img src="assets/neo4j_browser_connect.png" alt="Neo4j Browser connection page">
+          <div class="panel">
+            <h3>What This Shows</h3>
+            <p>The Neo4j web interface is running from my server-side container.</p>
+            <div class="fact"><b>Browser</b><span>localhost:7485</span></div>
+            <div class="fact"><b>Bolt database</b><span>localhost:7698</span></div>
+            <div class="fact"><b>Container</b><span>mubina-neo4j</span></div>
+            <p class="tiny">I used VS Code SSH port forwarding to reach the service from my computer.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">This is one proof screenshot. The browser page is on my computer, but the Neo4j service is running in the separate container on the Spark server.</aside>
+    </section>
+
+    <section class="slide" data-title="Troubleshooting">
+      <div class="slide-shell">
+        <div class="kicker">06 • TROUBLESHOOTING</div>
+        <h2>I Also Had to Debug the Bolt Connection</h2>
+        <div class="proof-layout">
+          <img src="assets/neo4j_bolt_troubleshooting.png" alt="Neo4j WebSocket error during connection setup">
+          <div class="panel">
+            <h3>What I Learned</h3>
+            <p>The Browser UI could load while the database connection still failed.</p>
+            <p>I traced the connection through:</p>
+            <div class="mini-flow">Browser → VS Code Port Forward → Spark Host → Docker Port → Neo4j Bolt</div>
+            <p>The working connection became <code>bolt://localhost:7698</code>.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">I included this because it shows I did not only follow a setup guide. I had to troubleshoot the separate web and Bolt connections and understand the path between my browser, SSH forwarding, Docker, and Neo4j.</aside>
+    </section>
+
+    <section class="slide" data-title="Controlled Test">
+      <div class="slide-shell">
+        <div class="kicker">07 • CONTROLLED TEST</div>
+        <h2>PathRAG → Neo4j Worked End to End</h2>
+        <div class="stat-row">
+          <div class="big-stat"><strong>1</strong><span>Small Markdown test document</span></div>
+          <div class="big-stat"><strong>9</strong><span>Nodes created</span></div>
+          <div class="big-stat"><strong>17</strong><span>Relationships created</span></div>
+        </div>
+        <div class="test-box">
+          <h3>Test facts I gave the system</h3>
+          <div class="test-facts">
+            <span>SENSOR_A uses I2C</span>
+            <span>SENSOR_A operates at 3.3 V</span>
+            <span>SENSOR_A connects to CONTROLLER_B</span>
+            <span>CONTROLLER_B requires a 3.3 V logic interface</span>
+          </div>
+        </div>
+        <p class="subtle">This proved the technical pipeline works: local LLM + embeddings + PathRAG + Neo4j.</p>
+      </div>
+      <aside class="speaker-note">I purposely used a tiny test instead of hundreds of documents. That gave me a controlled way to see exactly what the graph extractor did with four simple facts.</aside>
+    </section>
+
+    <section class="slide" data-title="Graph">
+      <div class="slide-shell graph-slide">
+        <div class="kicker">08 • THE GRAPH</div>
+        <h2>What PathRAG Actually Created</h2>
+        <div class="graph-wrap">
+          <img src="assets/controlled_graph.svg" alt="Recreated graph from the controlled Neo4j test">
+        </div>
+        <div class="legend">
+          <span class="legend-core">Core concepts</span>
+          <span class="legend-dup">Extra / overlapping extracted concepts</span>
+          <span>All 17 extracted edges were typed <b>RELATED</b>.</span>
+        </div>
+      </div>
+      <aside class="speaker-note">This graph is reconstructed directly from the node and relationship tables I queried in Neo4j. It makes the schema problem easy to see: one simple I2C idea became I2C, I2C BUS, and I2C INTERFACE, and all the edges are generic RELATED edges.</aside>
+    </section>
+
+    <section class="slide" data-title="Schema Lesson">
+      <div class="slide-shell">
+        <div class="kicker">09 • WHAT THE TEST TAUGHT US</div>
+        <h2>The Pipeline Works, but the Ontology Needs Control</h2>
+        <div class="before-after">
+          <div class="panel danger">
+            <h3>Current Extraction</h3>
+            <div class="relation">SENSOR_A <b>RELATED</b> I2C</div>
+            <div class="relation">SENSOR_A <b>RELATED</b> I2C INTERFACE</div>
+            <div class="relation">I2C BUS <b>RELATED</b> I2C</div>
+            <div class="relation">3.3 VOLTS <b>RELATED</b> CONTROLLER_B</div>
+          </div>
+          <div class="big-arrow">→</div>
+          <div class="panel success">
+            <h3>Better Target</h3>
+            <div class="relation">SENSOR_A <b>USES_INTERFACE</b> I2C</div>
+            <div class="relation">SENSOR_A <b>OPERATES_AT</b> 3.3 V</div>
+            <div class="relation">SENSOR_A <b>CONNECTS_TO</b> CONTROLLER_B</div>
+            <div class="relation">CONTROLLER_B <b>REQUIRES_LOGIC_LEVEL</b> 3.3 V</div>
+          </div>
+        </div>
+        <div class="callout"><b>Team connection:</b> JR saw the same issue and has already given Keaton a baseline set of node classes and relationships. My small test gives us another concrete case to validate that baseline.</div>
+      </div>
+      <aside class="speaker-note">I am not trying to replace Keaton's schema work. My contribution is evidence. I can show exactly what happened with the uncontrolled extraction, then help test whether the approved ontology improves it.</aside>
+    </section>
+
+    <section class="slide" data-title="Useful Pi Commands">
+      <div class="slide-shell">
+        <div class="kicker">10 • PI SME TOOLBOX</div>
+        <h2>Useful Pi and System Commands</h2>
+        <div class="command-grid">
+          <div class="command-card">
+            <span>DEV CONTAINER</span><h3>Check Pi</h3><code>pi --version</code><p>Confirms which Pi version is installed.</p>
+          </div>
+          <div class="command-card">
+            <span>DEV CONTAINER</span><h3>Start Pi</h3><code>pi</code><p>Starts the Pi coding-agent interface.</p>
+          </div>
+          <div class="command-card">
+            <span>DEV CONTAINER</span><h3>Check Local Models</h3><code>ollama ps</code><p>Shows models currently loaded by Ollama.</p>
+          </div>
+          <div class="command-card">
+            <span>DEV CONTAINER</span><h3>Start Ollama on GPU</h3><code>OLLAMA_LLM_LIBRARY=cuda_v13 ollama serve</code><p>Starts the local model service using the CUDA 13 library.</p>
+          </div>
+          <div class="command-card">
+            <span>SPARK HOST</span><h3>Check Containers</h3><code>docker ps -a</code><p>Shows my dev and Neo4j containers.</p>
+          </div>
+          <div class="command-card">
+            <span>SPARK HOST</span><h3>Check GPU</h3><code>docker exec mubina-dev nvidia-smi</code><p>Confirms the dev container can see the NVIDIA GPU.</p>
+          </div>
+        </div>
+        <div class="host-note"><b>Important:</b> Docker commands run on the Spark host. Pi, Ollama, and PathRAG commands run inside <code>mubina-dev</code>.</div>
+      </div>
+      <aside class="speaker-note">These are the commands I want to be comfortable explaining as the Pi SME. The important operational detail is knowing which machine or container each command belongs in.</aside>
+    </section>
+
+    <section class="slide" data-title="Pi Configuration">
+      <div class="slide-shell">
+        <div class="kicker">11 • HOW MY PI SETUP CONNECTS TO THE MODEL</div>
+        <h2>Pi Uses My Local Qwen Model Through Ollama</h2>
+        <div class="config-flow">
+          <div class="config-box"><b>Pi</b><small>Agent harness</small></div>
+          <div class="arrow">→</div>
+          <div class="config-box"><b>OpenAI-Compatible API</b><small>127.0.0.1:11434/v1</small></div>
+          <div class="arrow">→</div>
+          <div class="config-box"><b>Ollama</b><small>Local model server</small></div>
+          <div class="arrow">→</div>
+          <div class="config-box"><b>Qwen 3.8 27B</b><small>Runs on the GPU</small></div>
+        </div>
+        <div class="panel">
+          <h3>Why This Matters</h3>
+          <p>It lets us run the agent locally instead of depending on a remote model for every task. It also gives us a controlled place to test agent instructions, tools, and workflows.</p>
+        </div>
+      </div>
+      <aside class="speaker-note">This is the connection I set up in Pi. Pi talks to Ollama using an OpenAI-compatible API, and Ollama serves Qwen locally on the GPU.</aside>
+    </section>
+
+    <section class="slide" data-title="Agent Rules">
+      <div class="slide-shell">
+        <div class="kicker">12 • AGENT RULES</div>
+        <h2>Rules I Think We Need Around Our Agents</h2>
+        <div class="rules-grid">
+          <div><b>Least Access</b><p>Give each agent only the tools, files, and services it actually needs.</p></div>
+          <div><b>Clear Objective</b><p>The agent should know its job, expected output, and when the task is complete.</p></div>
+          <div><b>Source Evidence</b><p>Important technical claims should point back to a source document or graph evidence.</p></div>
+          <div><b>Verification</b><p>The extractor should not be the only thing deciding whether its own result is correct.</p></div>
+          <div><b>Human Approval</b><p>Important requirement or design changes should wait for a person before being committed.</p></div>
+          <div><b>Audit Trail</b><p>Log important agent actions, tool calls, approvals, failures, and changes.</p></div>
+        </div>
+      </div>
+      <aside class="speaker-note">These rules connect directly to my security and monitor responsibilities. The goal is not to stop the agents from working. The goal is to make their work controlled, reviewable, and traceable.</aside>
+    </section>
+
+    <section class="slide" data-title="Admin Tasks">
+      <div class="slide-shell">
+        <div class="kicker">13 • ADMIN / MONITOR TASKS</div>
+        <h2>Tasks That Relate to My Role</h2>
+        <div class="admin-lanes">
+          <div class="lane"><span>Configure</span><p>Pi model settings, tools, skills, instructions, permissions, agent home.</p></div>
+          <div class="lane"><span>Operate</span><p>Start services, check Pi/Ollama, verify containers and connectivity.</p></div>
+          <div class="lane"><span>Monitor</span><p>Watch agent actions, failures, unexpected tool use, and system health.</p></div>
+          <div class="lane"><span>Protect</span><p>Keep secrets out of logs and Git, limit access, and block unauthorized changes.</p></div>
+          <div class="lane"><span>Verify</span><p>Check important agent results against graph evidence and source documents.</p></div>
+          <div class="lane"><span>Report</span><p>Give the team clear evidence of what worked, what failed, and what needs review.</p></div>
+        </div>
+      </div>
+      <aside class="speaker-note">These are the practical admin tasks I see around my role. Some of them may later be split between people or agents, but they are the areas I need to understand to be useful as the Pi SME.</aside>
+    </section>
+
+    <section class="slide" data-title="Agent Scenario">
+      <div class="slide-shell">
+        <div class="kicker">14 • REAL AGENTIC SCENARIO</div>
+        <h2>If a User Changes a Requirement, What Happens?</h2>
+        <div class="bounce">
+          <div class="bounce-row">
+            <div class="step"><em>1</em><b>User</b><small>Requests a requirement change</small></div>
+            <div class="arrow">→</div>
+            <div class="step pi"><em>2</em><b>Pi / Orchestrator</b><small>Routes the task and gives the right tools</small></div>
+            <div class="arrow">→</div>
+            <div class="step"><em>3</em><b>Requirement Agent</b><small>Finds the exact requirement</small></div>
+          </div>
+          <div class="bounce-row">
+            <div class="step"><em>4</em><b>Technical Data Manager</b><small>Checks Neo4j, PathRAG, and source data</small></div>
+            <div class="arrow">→</div>
+            <div class="step"><em>5</em><b>Impact Analysis</b><small>Finds connected components and risks</small></div>
+            <div class="arrow">→</div>
+            <div class="step"><em>6</em><b>Verification</b><small>Checks the result against evidence</small></div>
+          </div>
+          <div class="bounce-row">
+            <div class="step security"><em>7</em><b>Security / Monitor</b><small>Checks permissions and logs the process</small></div>
+            <div class="arrow">→</div>
+            <div class="step human"><em>8</em><b>Human Review</b><small>Approve, reject, or request more work</small></div>
+            <div class="arrow">→</div>
+            <div class="step"><em>9</em><b>Approved Update</b><small>Only then update the requirement / graph</small></div>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">This is the kind of bounce diagram JR asked us to mature. I am especially looking at where Pi routes work, where permissions are applied, where verification happens, and where a human approval gate belongs.</aside>
+    </section>
+
+    <section class="slide" data-title="Graph Testing">
+      <div class="slide-shell">
+        <div class="kicker">15 • HOW WE TEST THE GRAPH</div>
+        <h2>Questions Should Force the LLM to Navigate Relationships</h2>
+        <div class="question-list">
+          <div><span>01</span><p>Which components depend on the same voltage requirement as SENSOR_A?</p></div>
+          <div><span>02</span><p>If CONTROLLER_B changes logic voltage, what connected components or interfaces may be affected?</p></div>
+          <div><span>03</span><p>Which source document supports this requirement and the component connected to it?</p></div>
+          <div><span>04</span><p>Find components that use I2C and also depend on a 3.3 V logic level.</p></div>
+          <div><span>05</span><p>If an interface is removed, what becomes indirectly affected through the graph?</p></div>
+        </div>
+        <div class="callout"><b>Goal:</b> We do not only want keyword lookup. We want to prove the LLM can follow the graph and explain the path it used.</div>
+      </div>
+      <aside class="speaker-note">JR asked for clever questions. I think the best questions are ones where the answer requires multiple hops in the graph, not just finding one node by name.</aside>
+    </section>
+
+    <section class="slide" data-title="Next Steps">
+      <div class="slide-shell">
+        <div class="kicker">16 • NEXT STEPS</div>
+        <h2>What I Am Doing Next</h2>
+        <div class="roadmap">
+          <div><span>Now</span><b>Share Evidence</b><p>Give Keaton my controlled graph findings and relationship ideas.</p></div>
+          <div><span>Next</span><b>Test the Ontology</b><p>Use JR + Keaton's approved schema and rerun the exact same test.</p></div>
+          <div><span>Then</span><b>Test Real Data</b><p>Use a very small set of real technical Markdown files before scaling.</p></div>
+          <div><span>Parallel</span><b>Mature Pi / Agent Rules</b><p>Define tools, permissions, handoffs, logs, verification, and approval points.</p></div>
+          <div><span>After</span><b>Agentic Scenarios</b><p>Test requirement changes and other real workflows end to end.</p></div>
+        </div>
+        <div class="closing">
+          <h3>My Main Goal</h3>
+          <p>Help make sure our agents can use technical data correctly, safely, and in a way the team can verify and explain.</p>
+        </div>
+      </div>
+      <aside class="speaker-note">The infrastructure is no longer the main blocker. My next work is about making the graph useful for agents and making the agent workflow controlled and verifiable.</aside>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="progress"><div id="progressBar"></div></div>
+    <span>← / → Move • F Full Screen • N Notes • Home First Slide</span>
+  </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
